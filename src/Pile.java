@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Iterator;
 
 public class Pile extends QueueArray<Card> {
 
@@ -8,9 +9,12 @@ public class Pile extends QueueArray<Card> {
         //
         // Example:
         //   Pile pile = new Pile("As 2s 3s Jh Qh Kh 4d 5d 6d 7c 8c 9c");
-
-        // TODO: implement pile constructor
-
+        Scanner larry = new Scanner(cards);
+        while (larry.hasNext()) {
+            String card = larry.next();
+            this.enqueue(new Card(card.charAt(0), card.charAt(1)));
+        }
+        larry.close();
     }
 
     public String toString() {
@@ -24,7 +28,16 @@ public class Pile extends QueueArray<Card> {
         //   Kc  Td  Jc  Th  9s  Kd
         // TODO: implement toString. Use a  'for (Card card : this) {}' loop to print them
         String output = "";
-
+        int count = 0;
+        Iterator<Card> lori = this.iterator();
+        while (lori.hasNext()) {
+            ++count;
+            output += lori.next().toString() + "  ";
+            if (count == 10) {
+                output += System.lineSeparator();
+                count = 0;
+            }
+        }
         return output;
 
     }
@@ -37,6 +50,6 @@ public class Pile extends QueueArray<Card> {
      * hold the two halves while you rebuild this pile.
      */
     public void shuffle() {
-        // TODO: implement the riffle shuffle
+       Pile temp1 = new Pile();
     }
 }

@@ -110,11 +110,12 @@ public class QueueArray<Item> implements Iterable<Item>, Queue<Item>{
              */
             public Item next() {
                 //TODO Implement the next() method
-                Item item = items[0];
-                if (hasNext()) {
-                    item = items[++pos];
-                    ++count;
+                Item item = items[pos];
+                pos++;
+                if (pos == items.length) {
+                    pos = 0;
                 }
+                count++;
                 return item;
             }
         });
