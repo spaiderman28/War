@@ -50,6 +50,6 @@ public class Pile extends QueueArray<Card> {
      * hold the two halves while you rebuild this pile.
      */
     public void shuffle() {
-       Pile temp1 = new Pile();
+       //Pile temp1 = new Pile();
     }
 }

@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class War {
@@ -35,6 +36,22 @@ public class War {
     }
 
     // ADD ADDITIONAL METHODS HERE, IF DESIRED...
+    public void iter(Pile p1, Pile p2) {
+        Card c1 = p1.iterator().next();
+        Card c2 = p2.iterator().next();
+        if (c1.compareTo(c2) > 0) {
+            p1.enqueue(c1);
+            p2.dequeue();
+        }
+        else if (c1.compareTo(c2) < 0) {
+            p2.enqueue(c2);
+            p1.dequeue();
+        }
+        else {
+            printWar();
+
+        }
+    }
 
     public static void main(String[] args) {
 
@@ -49,6 +66,9 @@ public class War {
             System.out.println("Loading deck from: " + args[0]);
             pile1 = new Pile(scanner.nextLine());
             pile2 = new Pile(scanner.nextLine());
+
+
+
             scanner.close();
         } catch (FileNotFoundException e) {
             System.out.println("Error: File not found: " + args[0]);
